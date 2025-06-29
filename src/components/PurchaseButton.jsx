@@ -49,7 +49,7 @@ export const PurchaseButton = () => {
                 onClick={() => setShowModal(true)}
                 className="bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600"
             >
-Get Full Version ($20)
+Get Full Version
             </button>
 
             {showModal && (
