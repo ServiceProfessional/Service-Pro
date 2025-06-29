@@ -7,7 +7,7 @@ const isProd = process.env.NODE_ENV === 'production'
 const nextConfig = {
   basePath: isProd ? "/Service-Pro" : "",
   assetPrefix: isProd ? "/Service-Pro" : "",
-  output: 'export',
+  trailingSlash: true,
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md'],
   experimental: {
@@ -19,7 +19,8 @@ const nextConfig = {
   },
   images: {
     loader: 'akamai',
-    path: '',
+    path: '/',
+    unoptimized: true,
   },
 }
 
