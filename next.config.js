@@ -7,6 +7,7 @@ const isProd = process.env.NODE_ENV === 'production'
 const nextConfig = {
   basePath: isProd ? "/Service-Pro" : "",
   assetPrefix: isProd ? "/Service-Pro" : "",
+  output: 'export',
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md'],
   experimental: {
