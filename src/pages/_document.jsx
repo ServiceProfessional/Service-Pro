@@ -46,7 +46,7 @@ export default function Document() {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.3.2/build/styles/default.min.css"></link>
 
-        {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-TJ2VJ6X3YG"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHNGRFM22V"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -55,17 +55,7 @@ export default function Document() {
             gtag('js', new Date());
             gtag('config', 'G-LHNGRFM22V');
             `
-          }} /> */}
-
-
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHNGRFM22V"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments)}
-          gtag('js', new Date());
-          gtag('config', 'G-LHNGRFM22V');
-        </script>
-
+          }} />
 
       </Head>
       <body className="bg-white dark:bg-slate-900">
