@@ -4,7 +4,7 @@ import { HeroBackground } from '@/components/HeroBackground';
 import blurCyanImage from '@/images/blur-cyan.png';
 import blurIndigoImage from '@/images/blur-indigo.png';
 import logo from '@/images/logo.png';
-import { CodeSample } from './CodeSample';
+
 import { PurchaseButton } from './PurchaseButton';
 import { useState, useEffect } from 'react';
 import DownloadSection from '@/components/DownloadButton';
@@ -20,8 +20,7 @@ export function TrafficLightsIcon(props) {
 
 export function Hero() {
     const [loading, setLoading] = useState(true);
-    const [windowsVersionLink, setWindowsVersionLink] = useState(null);
-    const [unixVersionLink, setUnixVersionLink] = useState(null);
+    const [platformData, setPlatformData] = useState({});
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -41,17 +40,27 @@ export function Hero() {
 
                 const data = await response.json();
 
-                if (data.windows) {
-                    setWindowsVersionLink(data.windows.download_url);
-                } else if (data.windows_error) {
-                    setError(`Windows Error: ${data.windows_error}`);
+                // Process platform data and errors
+                const platforms = ['windows', 'macos', 'android', 'ios'];
+                const newPlatformData = {};
+                const errors = [];
+
+                platforms.forEach(platform => {
+                    if (data[platform]) {
+                        newPlatformData[platform] = data[platform];
+                    } else if (data[`${platform}_error`]) {
+                        errors.push(`${platform}: ${data[`${platform}_error`]}`);
+                    }
+                });
+
+                setPlatformData(newPlatformData);
+
+                if (errors.length > 0) {
+                    setError(`Download errors: ${errors.join(', ')}`);
+                } else if (Object.keys(newPlatformData).length === 0) {
+                    setError('No downloads available for any platform.');
                 }
 
-                if (data.unix) {
-                    setUnixVersionLink(data.unix.download_url);
-                } else if (data.unix_error) {
-                    setError(`Unix Error: ${data.unix_error}`);
-                }
             } catch (error) {
                 console.error('There was an error fetching the latest versions:', error);
                 setError('Failed to fetch the latest versions.');
@@ -65,24 +74,22 @@ export function Hero() {
     return (
         <div className="overflow-hidden bg-slate-900 dark:-mb-32 dark:mt-[-4.5rem] dark:pb-32 dark:pt-[4.5rem] dark:lg:mt-[-4.75rem] dark:lg:pt-[4.75rem]">
             <div className="py-16 sm:px-2 lg:relative lg:py-20 lg:px-0">
-                <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-y-16 gap-x-8 px-4 lg:max-w-8xl lg:grid-cols-2 lg:px-8 xl:gap-x-16 xl:px-12">
-                    <div className="relative z-10 md:text-center lg:text-left">
+                <div className="mx-auto max-w-4xl px-4 lg:px-8">
+                    <div className="relative z-10 text-center">
                         <div className="relative">
-                            <p className="inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text font-display text-5xl tracking-tight text-transparent">
-                                {/* Your logo */}
+                            <div className="flex justify-center mb-8">
                                 <Image
-                                    className="rounded-lg shadow-inner"
+                                    className="rounded-lg shadow-inner mx-auto"
                                     src={logo}
-                                    alt=""
+                                    alt="Service Pro - Professional Service Management"
                                     width={650}
                                     unoptimized
                                     priority
                                 />
-                            </p>
+                            </div>
                             <div className="mt-8 flex gap-4 justify-center">
                                 <DownloadSection
-                                    windowsVersionLink={windowsVersionLink}
-                                    unixVersionLink={unixVersionLink}
+                                    platformData={platformData}
                                     loading={loading}
                                 />
                             </div>
@@ -94,9 +101,7 @@ export function Hero() {
                             )}
                         </div>
                     </div>
-                    <div className="relative lg:static xl:pl-10">
-                        <CodeSample />
-                    </div>
+
                 </div>
             </div>
         </div>

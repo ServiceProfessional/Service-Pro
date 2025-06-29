@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-const stripePromise = loadStripe("pk_test_51QM6VNGCcYURSIrvgcaZhOKsRiklESu8fpAHT8KhmSFjhZll7lqKAYgiAwNaLw0HWxsR6JdvZLt3hJUGfZChEkHR00yGWOPcpo");
+const stripePromise = loadStripe("pk_test_51RfD93Phv6PF2WVhFGZHgnYmFdjQJZGVvioFhKMjucKqRfK6GPPwIrKXEzJ9HUHILZgjKiUTEWGUuVfJNFn3SJqd00eqCJuAl4");
 
 export const PurchaseButton = () => {
     const [showModal, setShowModal] = useState(false);
@@ -13,7 +13,7 @@ export const PurchaseButton = () => {
             const stripe = await stripePromise; // Load Stripe.js
 
             // Create a checkout session with email
-            const response = await fetch('https://kxl4fcxtqmkiaiikyny4y27bbi0dntkc.lambda-url.us-east-1.on.aws?buy=1', {
+            const response = await fetch('https://mv4jzytg25yvjeywdxd7jjytue0qiskl.lambda-url.us-east-1.on.aws?buy=1', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -49,26 +49,32 @@ export const PurchaseButton = () => {
                 onClick={() => setShowModal(true)}
                 className="bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600"
             >
-                Purchase License ($20)
+Get Full Version ($20)
             </button>
 
             {showModal && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white rounded-lg p-6 w-11/12 max-w-md shadow-lg">
-                        <h2 className="text-2xl font-bold mb-4">Terms and Conditions</h2>
+                        <h2 className="text-2xl font-bold mb-4">Purchase Service Pro License</h2>
                         <p className="text-gray-700 mb-6">
-                            By purchasing this license, you agree to the following terms and
-                            conditions:
+                            Unlock the full potential of Service Pro with unlimited clients,
+                            advanced reporting, and priority support.
                         </p>
-                        <ul className="list-disc pl-6 mb-6 text-gray-700">
-                            <li>
-                                The software is provided "as-is" without warranties of any kind.
-                            </li>
-                            <li>
-                                The developer is not liable for any financial or trading outcomes
-                                from its use.
-                            </li>
-                        </ul>
+                        <div className="bg-blue-50 p-4 rounded-lg mb-6">
+                            <h3 className="font-semibold text-blue-900 mb-2">Full Version Includes:</h3>
+                            <ul className="list-disc pl-6 text-blue-800 text-sm">
+                                <li>Unlimited clients and service schedules</li>
+                                <li>Advanced reporting and analytics</li>
+                                <li>Email and SMS notifications</li>
+                                <li>Invoice generation and payment tracking</li>
+                                <li>Priority customer support</li>
+                                <li>Regular feature updates</li>
+                            </ul>
+                        </div>
+                        <p className="text-gray-600 text-sm mb-6">
+                            By purchasing, you agree that the software is provided "as-is"
+                            and the developer is not liable for business outcomes from its use.
+                        </p>
                         <div className="flex justify-end gap-4">
                             <button
                                 onClick={() => setShowModal(false)}
@@ -81,7 +87,7 @@ export const PurchaseButton = () => {
                                 disabled={loading}
                                 className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                             >
-                                {loading ? 'Processing...' : 'Accept & Purchase'}
+                                {loading ? 'Processing...' : 'Purchase Now'}
                             </button>
                         </div>
                     </div>

@@ -51,9 +51,9 @@ function collectHeadings(nodes, slugify = slugifyWithCounter()) {
 export default function App({ Component, pageProps }) {
   let title = pageProps.markdoc?.frontmatter.title
 
-  let pageTitle = "Service Pro!"
-    // pageProps.markdoc?.frontmatter.pageTitle ||
-    // `${pageProps.markdoc?.frontmatter.title} to Service Pro!`
+  let pageTitle = pageProps.markdoc?.frontmatter.pageTitle ||
+    pageProps.markdoc?.frontmatter.title ||
+    "Service Pro - Professional Service Management"
 
   let description = pageProps.markdoc?.frontmatter.description
 

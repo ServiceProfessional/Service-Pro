@@ -1,34 +1,39 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-// Helper functions to extract versions
-const extractWindowsVersion = (url) => {
-    const match = url.match(/ServicePro-Windows-([\d.]+)\.zip/);
-    return match ? match[1] : null;
+// Platform configuration with icons and colors
+const platformConfig = {
+    windows: {
+        name: "Windows",
+        icon: "🪟",
+        color: "bg-blue-600 hover:bg-blue-700"
+    },
+    macos: {
+        name: "macOS",
+        icon: "🍎",
+        color: "bg-gray-600 hover:bg-gray-700"
+    },
+    android: {
+        name: "Android",
+        icon: "🤖",
+        color: "bg-green-600 hover:bg-green-700"
+    },
+    ios: {
+        name: "iOS",
+        icon: "📱",
+        color: "bg-indigo-600 hover:bg-indigo-700"
+    }
 };
 
-const extractUnixVersion = (url) => {
-    const match = url.match(/ServicePro-Unix-([\d.]+)\.zip/);
-    return match ? match[1] : null;
-};
-
-const DownloadSection = ({ windowsVersionLink, unixVersionLink, loading }) => {
+const DownloadSection = ({ platformData, loading }) => {
     const [showDialog, setShowDialog] = useState(false);
     const [downloadLink, setDownloadLink] = useState("");
-
-    let windowsVersion;
-    let unixVersion;
-    if (!loading) {
-        windowsVersion = extractWindowsVersion(windowsVersionLink);
-        unixVersion = extractUnixVersion(unixVersionLink);
-    } else {
-        windowsVersion = "";
-        unixVersion = "";
-    }
+    const [selectedPlatform, setSelectedPlatform] = useState("");
 
     // Open dialog and set download link
-    const handleDownloadClick = (link) => {
+    const handleDownloadClick = (link, platform) => {
         setDownloadLink(link);
+        setSelectedPlatform(platform);
         setShowDialog(true);
     };
 
@@ -36,6 +41,7 @@ const DownloadSection = ({ windowsVersionLink, unixVersionLink, loading }) => {
     const handleDialogClose = () => {
         setShowDialog(false);
         setDownloadLink("");
+        setSelectedPlatform("");
     };
 
     return (
@@ -43,30 +49,41 @@ const DownloadSection = ({ windowsVersionLink, unixVersionLink, loading }) => {
             {/* Download text styled to be large, bold, and white */}
             <div className="text-4xl font-bold text-white">Download</div>
 
+            {/* Platform download buttons in a responsive grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl">
+                {Object.entries(platformConfig).map(([platform, config]) => {
+                    const data = platformData?.[platform];
+                    const hasData = data && !loading;
+                    const version = data?.version || "";
 
-        
-            <div className="flex gap-4">
-                <button
-                    onClick={() => handleDownloadClick(windowsVersionLink)}
-                    disabled={loading || !windowsVersionLink}
-                    className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 disabled:opacity-50"
-                >
-                    {loading ? "Loading..." : `Windows ${windowsVersion || ""}`}
-                </button>
-                <button
-                    onClick={() => handleDownloadClick(unixVersionLink)}
-                    disabled={loading || !unixVersionLink}
-                    className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 disabled:opacity-50"
-                >
-                    {loading ? "Loading..." : `Unix ${unixVersion || ""}`}
-                </button>
+                    return (
+                        <button
+                            key={platform}
+                            onClick={() => hasData && handleDownloadClick(data.download_url, platform)}
+                            disabled={loading || !hasData}
+                            className={`${config.color} text-white px-4 py-3 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed flex flex-col items-center gap-2 min-h-[100px] transition-all duration-200`}
+                        >
+                            <span className="text-2xl">{config.icon}</span>
+                            <span className="font-semibold">{config.name}</span>
+                            {loading ? (
+                                <span className="text-xs">Loading...</span>
+                            ) : hasData ? (
+                                <span className="text-xs">v{version}</span>
+                            ) : (
+                                <span className="text-xs text-red-200">Not Available</span>
+                            )}
+                        </button>
+                    );
+                })}
             </div>
 
             {/* Terms and Conditions Modal */}
             {showDialog && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white rounded-lg p-6 w-11/12 max-w-md shadow-lg">
-                        <h2 className="text-2xl font-bold mb-4">Terms and Conditions</h2>
+                        <h2 className="text-2xl font-bold mb-4">
+                            {platformConfig[selectedPlatform]?.icon} Download {platformConfig[selectedPlatform]?.name}
+                        </h2>
                         <p className="text-gray-700 mb-6">
                             By downloading and using Service Pro, you agree to the following
                             terms and conditions:

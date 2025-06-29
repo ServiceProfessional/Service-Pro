@@ -1,35 +1,59 @@
 ---
-title: ''
+title: 'Service Pro - Professional Service Management'
+description: 'Transform your service business with Service Pro. The complete solution for sole traders and service professionals to manage clients, schedule services, and send automated notifications.'
 ---
 
-# Welcome to Service Pro! 🎉
+# Transform Your Service Business with Service Pro 🚀
 
-Get ready to join the Service Revolution with ServicePro — your ultimate companion for automated cryptocurrency trading. Let’s turn trading into a celebration of profit! 🚀
+**The complete solution for sole traders and service professionals who want to stay organized, keep clients happy, and grow their business.**
 
-## What is Service Pro?
+Service Pro helps you manage your client relationships, track scheduled services, and ensure you never miss an appointment again.
 
-Service Pro is an app for sole traders who develop client lists and need to keep track of scheduled jobs that they do for their clients. Service Pro will track those details, and also send push notifications, emails, or even SMS text messages to remind your clients when they can expect the next arrival.
+## 🎯 What is Service Pro?
 
-## 💸 Turn Capital Into Growth
+Service Pro is a comprehensive service management app designed specifically for **sole traders** and **independent service professionals**. Whether you're maintaining lawns, cleaning homes, servicing equipment, or providing any recurring service, Service Pro keeps you organized and your clients informed.
 
-With Service Pro, your initial investment could yield returns of thousands of dollars per year—all while you sit back and let the bots do the work.
+### Perfect for:
+- **Lawn Care & Landscaping** - Track mowing schedules, seasonal services, and property maintenance
+- **House Cleaning Services** - Manage recurring cleaning appointments and special requests
+- **Equipment Servicing** - Schedule maintenance, repairs, and inspections
+- **Pool Maintenance** - Track chemical treatments, cleaning schedules, and equipment checks
+- **HVAC Services** - Manage system maintenance, filter changes, and seasonal tune-ups
+- **Pet Services** - Schedule grooming, walking, and pet sitting appointments
+- **And many more service-based businesses!**
 
-### Supported platforms
- - iOS
- - Android
- - Windows Desktop
- - macOS
+## ✨ Key Features
 
+### 📅 **Smart Scheduling**
+- Create recurring service schedules for each client
+- Automatic job generation based on your service intervals
+- Visual calendar view of all upcoming appointments
 
-We’re continuously expanding our supported exchanges, so stay tuned for more integrations!
+### 🔔 **Automated Notifications**
+- **Push notifications** to keep you on track
+- **Email reminders** sent to clients before service visits
+- **SMS alerts** for urgent schedule changes (coming soon)
+- Customizable notification timing and messaging
 
-## Ready to Join the Party?
+### 👥 **Client Management**
+- Comprehensive client database with contact details
+- Service history and notes for each property
+- Photo documentation of completed work
+- Invoice generation and tracking
 
-Your download includes full access to Service Pro in Demo Mode, giving you a risk-free way to explore its capabilities. In demo mode, you'll experience the power of Service Pro against live price data, but fake money.
+### 📱 **Multi-Platform Access**
+Available on all your devices so you can manage your business anywhere
 
-🎉 Service Pro: Because trading should be fun AND profitable!
+## 💼 Why Service Professionals Choose Service Pro
 
+**"Never lose track of a client again"** - Service Pro automatically manages your schedule so you can focus on delivering quality service.
 
-## This is currently an MVP product
+**"Keep clients informed and happy"** - Automated notifications let clients know when to expect you, reducing missed appointments and improving satisfaction.
 
-Live mode is not generally available yet, but with enough interest, it will be made.
+**"Grow your business with confidence"** - Detailed service history and client management tools help you provide consistent, professional service that keeps clients coming back.
+
+## 🚀 Get Started Today
+
+Download Service Pro and start organizing your service business like a pro. The app includes a **free demo mode** so you can explore all features risk-free with sample data.
+
+### Ready to transform your service business?
