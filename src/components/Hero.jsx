@@ -1,8 +1,4 @@
 import Image from 'next/image';
-import { Button } from '@/components/Button';
-import { HeroBackground } from '@/components/HeroBackground';
-import blurCyanImage from '@/images/blur-cyan.png';
-import blurIndigoImage from '@/images/blur-indigo.png';
 import logo from '@/images/logo.png';
 
 import { PurchaseButton } from './PurchaseButton';
@@ -122,7 +118,7 @@ export function Hero() {
                             </div>
 
                             {/* Download Section */}
-                            <div className="mb-8">
+                            <div className="mb-12">
                                 <h2 className="text-2xl font-semibold text-white mb-6">
                                     Download for Your Platform
                                 </h2>
@@ -132,6 +128,13 @@ export function Hero() {
                                         loading={loading}
                                     />
                                 </div>
+                            </div>
+
+                            {/* Divider */}
+                            <div className="flex items-center justify-center mb-8">
+                                <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
+                                <div className="px-4 text-gray-400 text-sm">or</div>
+                                <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
                             </div>
 
                             <PurchaseButton />
